@@ -1,0 +1,50 @@
+﻿<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :予定名 %>
+    <%= f.collection_select :name, OftenTask.all, :name, :name %>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :詳細内容 %>
+    <%= f.text_area :content, :size => "60x10" %>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :〆切 %>
+    <%= f.text_field :day, :class => 'datepicker', :value => Date.today %>
+    <font color="red">※連続で作成する場合は更新ボタンを押してください</font>
+   </div>
+<br>
+  <div class="field">
+    <%= f.label :重要度 %>
+<label><%= f.radio_button :important, "1", {:checked=>true} %>1</label>
+  <label><%= f.radio_button :important, "2" %>2</label>
+  <label><%= f.radio_button :important, "3" %>3</label>
+  <label><%= f.radio_button :important, "4" %>4</label>
+  <label><%= f.radio_button :important, "5" %>5</label>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :添付ファイル %>
+    <input type="file" name="upload" />
+  </div>
+<br>
+<br>
+  <div class="actions">
+    <%= f.submit :追加 %>
+  </div>
+<% end %>
+
+

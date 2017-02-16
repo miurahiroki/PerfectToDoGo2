@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<div align = center>
+<head>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+<div align = "right">
+   <%= "ログインユーザー:#{session[:usrname]}|" %>
+   <%= link_to "ログアウト",login_index_path %>
+</div>
+
+<div align = center>
+<a href="http://localhost:3000/tasks">
+ <%= image_tag 'ph.jpeg' %></a><font size="7" color="blue">PerfectToDoGo!!</font><br>
+ </div>
+
+<%= yield %>
+</head>
+<body style="background-color: cleam">
+</body>
+</html>

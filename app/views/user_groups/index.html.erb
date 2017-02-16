@@ -1,0 +1,45 @@
+﻿<div style="position:absolute; top:180px; left:800px;">
+
+<p id="notice"><%= notice %></p>
+
+<div style="position:absolute; top:100px; left:660px;">
+<a href="http://localhost:3000/tasks/new">
+ <%= image_tag 'btn057_01.png' %>
+  </div>
+  </a>
+
+
+<div style="position:absolute; top:100px; left:900px;">
+ <a href="http://localhost:3000/oneweeks">
+ <%= image_tag 'btn057_05.png' %>
+ </div>
+</a>
+
+<div style="position:absolute; top:100px; left:1020px;">
+ <a href="http://localhost:3000/often_tasks">
+ <%= image_tag 'btn057_06.png' %>
+ </div>
+</a>
+
+<div style="position:absolute; top:100px; left:1140px;">
+<a href="http://localhost:3000/chatlogs">
+ <%= image_tag 'btn057_08.png' %>
+ </div>
+</a>
+
+<h1>Listing User Groups</h1>
+
+<table>
+<%= form_for(@file) do %>
+  <div class="field">
+    <%= f.file_field :upload_file %>
+  </div>
+  <div class="actions"
+    <%= f.submit "Upload" %>
+  </div>
+<% end %>
+</table>
+
+<br>
+
+<%= link_to 'New User group', new_user_group_path %>

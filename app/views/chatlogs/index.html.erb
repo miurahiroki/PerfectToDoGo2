@@ -1,0 +1,86 @@
+﻿<p id="notice"><%= notice %></p>
+
+<div style="position:absolute; top:150px; left:415px;">
+<a href="http://localhost:3000/tasks/new">
+ <%= image_tag 'btn057_01.png' %>
+  </div>
+  </a>
+
+<div style="position:absolute; top:150px; left:535px;">
+ <a href="http://localhost:3000/oneweeks">
+ <%= image_tag 'btn057_05.png' %>
+ </div>
+</a>
+
+<div style="position:absolute; top:150px; left:655px;">
+ <a href="http://localhost:3000/often_tasks">
+ <%= image_tag 'btn057_06.png' %>
+ </div>
+</a>
+
+<div style="position:absolute; top:150px; left:775px;">
+<a href="http://localhost:3000/chatlogs">
+ <%= image_tag 'btn057_08.png' %>
+ </div>
+</a>
+
+<div style="position:absolute; top:150px; left:895px;">
+<a href="http://localhost:3000/photos">
+ <%= image_tag 'btn057_03.png' %>
+ </div>
+</a>
+
+<div style="position:absolute; top:240px; left:600px;">
+
+<h1>チャットログ</h1>
+
+<table style="background-color: silver">
+   
+  <thead>
+    <tr>
+      <th>ユーザーネーム</th>
+      <th>内容</th>
+
+  <tbody style="background-color: white">
+    <% @chatlogs.each do |chatlog| %>
+      <tr>
+        <td><%= chatlog.user_id %></td>
+        <td><%= chatlog.content %></td>
+
+        <% if chatlog.user_id == session[:usrname] %>
+          <td><%= link_to '削除', chatlog, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+        <% end %>
+
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @chatlogs %>
+
+<%= form_for(@chatlog) do |f| %>
+  <% if @chatlog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chatlog.errors.count, "error") %> prohibited this chatlog from being saved:</h2>
+
+      <ul>
+      <% @chatlog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<br><br>
+  <div class="field"> 
+    <%= f.label :ユーザーネーム %><br>
+    <%= f.text_area :user_id, :value => session[:usrname], :readonly => true, :style => "font-size:120%" %></br>
+  </div>
+  <div class="field">
+    <%= f.label :内容 %><br>
+    <%= f.text_area :content, :size => "30x20" %>
+  </div>
+  <div class="actions" align = center>
+    <%= f.submit :作成 %>
+  </div>
+<% end %>

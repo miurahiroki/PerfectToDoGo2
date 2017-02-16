@@ -1,0 +1,28 @@
+﻿
+<%= form_for(@chatlog) do |f| %>
+  <% if @chatlog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chatlog.errors.count, "error") %> prohibited this chatlog from being saved:</h2>
+
+      <ul>
+      <% @chatlog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field"> 
+    <%= f.label :ユーザーネーム %><br>
+    <%= session[:usrname] %></br>
+  </div>
+
+  <div class="field">
+    <%= f.label :内容 %><br>
+    <%= f.text_area :content, :size => "30x20" %>
+  </div>
+
+  <div class="actions" align = center>
+    <%= f.submit :送信 %>
+  </div>
+<% end %>
